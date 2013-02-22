@@ -15,10 +15,19 @@
   </repositories>
   
   <dependencies>
+  	<!-- Java EE -->
   	<dependency>
   		<groupId>javax</groupId>
   		<artifactId>javaee-api</artifactId>
   		<version>6.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+  	
+  	<!-- PostgreSQL JDBC driver -->
+  	<dependency>
+  		<groupId>postgresql</groupId>
+  		<artifactId>postgresql</artifactId>
+  		<version>9.1-901.jdbc4</version>
   		<scope>provided</scope>
   	</dependency>
   </dependencies>
@@ -31,14 +40,13 @@
   	
   	<plugins>
   		<plugin>
-  			<groupId>org.codehaus.mojo</groupId>
-  			<artifactId>tomcat-maven-plugin</artifactId>
+  			<groupId>org.apache.tomcat.maven</groupId>
+  			<artifactId>tomcat7-maven-plugin</artifactId>
+  			<version>2.0</version>
   			
-  			<configuration>
+  			<configuration>  				
+  				<server>tomcat_local</server>
   				<url>http://localhost:8080/manager/text</url>
-  				<server>localhost</server>
-  				<username>deployer</username>
-  				<password>test</password>
   			</configuration>
   		</plugin>
   	</plugins>
