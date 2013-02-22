@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.web-app</groupId>
   <artifactId>web-app</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <description>Simple Web-App for education purposes</description>
   
