@@ -9,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import edu.web_app.beans.*;
 
 public class DbServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,30 +36,6 @@ public class DbServlet extends HttpServlet {
 		out.println("<tr>");
 		out.println("<th>User</th><th>Password</th>");
 		out.println("</tr>");
-		
-		DatabaseBean dbCon = new DatabaseBean();
-		
-		dbCon.setUser("postgres");
-		dbCon.setPassword("");
-		dbCon.setConnUrl("jdbc:postgresql://192.168.1.11:5443/web-app");
-		
-		try {
-			dbCon.connectDatabase();
-			
-			ResultSet rs = dbCon.executeStatement("SELECT * FROM app.users");
-			 
-			 while (rs.next()) {
-					out.println("<tr>");
-					out.println("<td>" + rs.getString(2) + "</td><td>" + rs.getString(3) + "</td>");
-					out.println("</tr>");
-				}
-		} catch (ClassNotFoundException e) {
-			System.err.println("JDBC-Treiberproblem!");
-			e.printStackTrace();
-		} catch (SQLException e) {
-			System.err.println("SQL-Query Fehler!");
-			e.printStackTrace();
-		}
 		
 		out.println("</table>");
 		out.println("</body>");
