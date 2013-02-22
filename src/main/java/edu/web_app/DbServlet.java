@@ -48,7 +48,7 @@ public class DbServlet extends HttpServlet {
 			
 			//Use the credentials defined in context.xml and web.xml for
 			//PostgreSQL database.
-			DataSource ds = (DataSource) appContext.lookup("java:/comp/env/jdbc/UserDB");
+			DataSource ds = (DataSource) appContext.lookup("java:comp/env/jdbc/UserDB");
 			
 			//Create connection and execute a query, write results into rs
 			Connection conn = ds.getConnection();			
