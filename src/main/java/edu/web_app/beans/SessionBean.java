@@ -20,4 +20,12 @@ public class SessionBean {
 	public void setSessionKey(UUID sessionKey) {
 		this.sessionKey = sessionKey;
 	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}	
 }

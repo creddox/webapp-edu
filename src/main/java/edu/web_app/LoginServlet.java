@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import edu.web_app.beans.SessionBean;
+
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -89,7 +91,14 @@ public class LoginServlet extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			
-			request.getSession().setAttribute("uid", uid);
+			//Creating new SessionBean and attaching it to the application context
+			SessionBean session = new SessionBean();
+			session.setSessionKey(UUID.randomUUID());
+			this.getServletContext().setAttribute(session.getSessionKey().toString(), session);
+			
+			//For controlling purposes, we write a session cookie.
+			Cookie cookie = new Cookie("sessionID", session.getSessionKey().toString());
+			response.addCookie(cookie);
 		}
 		
 		
