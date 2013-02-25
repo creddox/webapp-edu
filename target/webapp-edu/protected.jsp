@@ -4,9 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Member page</title>
 </head>
 <body>
-
+	<% int uid = (Integer) request.getSession().getAttribute("uid");
+	
+	if (uid < 0) {
+	%>
+	<b>This member page is only for validated users! Come back when you have logged in.</b>
+	<%
+	} else {
+	%>
+	<b>This was a triumph. I'm making a note here, huge success.</b>
+	<%	
+	}
+	%>
 </body>
 </html>
