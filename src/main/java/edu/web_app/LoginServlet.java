@@ -7,10 +7,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.UUID;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,20 +67,32 @@ public class LoginServlet extends HttpServlet {
 			out.println(e.getMessage() + "<br/>");
 			out.println("A complete stacktrace has been created in the logs.");
 			e.printStackTrace();
-		}
-		
-		out.println("<html>");
-		out.println("<head><title>User validation</title></head>");
-		out.println("<bod>");
+		}		
 		
 		if (uid < 0) {
-			out.println("<b>No valid credentials provided.");
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>User not validated</title>");
+			out.println("<meta http-equiv=\"refresh\" content=\"5;/web-app/login.html\"");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<b>No valid credentials provided. Redirecting to login page.");
+			out.println("</body>");
+			out.println("</html>");
 		} else {
-			out.println("<b>Credentials validated! UID: " + uid + "</b>");
+			out.println("<html>");
+			out.println("<head><title>User validated</title></head>");
+			out.println("<meta http-equiv=\"refresh\" content=\"5;/web-app/protected.jsp\"");
+			out.println("<body>");
+			out.println("<b>Credentials validated! UID: " + uid + "</b><br/>");
+			out.println("Redirecting to member page.");
+			out.println("</body>");
+			out.println("</html>");
+			
+			request.getSession().setAttribute("uid", uid);
 		}
 		
-		out.println("</body>");
-		out.println("</html>");
+		
 	}
 
 	//Checks the user credentials and returns his UID from the database. Returns -1 if user
