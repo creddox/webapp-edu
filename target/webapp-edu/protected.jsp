@@ -7,7 +7,11 @@
 <title>Member page</title>
 </head>
 <body>
-	<% int uid = (Integer) request.getSession().getAttribute("uid");
+	<% int uid = -1;
+	
+	if (request.getSession().getAttribute("uid") != null) {
+		uid = (Integer) request.getSession().getAttribute("uid");
+	}
 	
 	if (uid < 0) {
 	%>
@@ -16,6 +20,9 @@
 	} else {
 	%>
 	<b>This was a triumph. I'm making a note here, huge success.</b>
+	<form action="/web-app/logout" method="post">
+		<input type="submit" name="logout" value="Logout">
+	</form>
 	<%	
 	}
 	%>
