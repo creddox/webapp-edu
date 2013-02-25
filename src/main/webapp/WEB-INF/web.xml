@@ -12,7 +12,6 @@
   <servlet-mapping>
     <servlet-name>HelloWorld_Servlet</servlet-name>
     <url-pattern>/hello</url-pattern>
-    <url-pattern>/</url-pattern>
   </servlet-mapping>
   
   <!-- Simple servlet to prove that connection to db works -->

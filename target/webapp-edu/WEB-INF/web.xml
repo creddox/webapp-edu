@@ -2,16 +2,19 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>web-app</display-name>
   
-  <!-- Servlet and mappings -->
+  <!-- Servlets with their respective mappings -->
+  
+  <!-- Sample Hello World servlet -->
   <servlet>
-    <servlet-name>HelloWorldServlet</servlet-name>
+    <servlet-name>HelloWorld_Servlet</servlet-name>
     <servlet-class>edu.web_app.HelloWorld</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HelloWorldServlet</servlet-name>
+    <servlet-name>HelloWorld_Servlet</servlet-name>
     <url-pattern>/hello</url-pattern>
-    <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+  <!-- Simple servlet to prove that connection to db works -->
   <servlet>
     <servlet-name>DB_Servlet</servlet-name>
     <servlet-class>edu.web_app.DbServlet</servlet-class>
@@ -21,11 +24,23 @@
     <url-pattern>/db</url-pattern>
   </servlet-mapping>
   
-  <!-- Ressource definition for PostgreSQL server -->
+  <!-- Simple login servlet to test out simple authentication -->
+  <servlet>
+  	<servlet-name>Login_Servlet</servlet-name>
+  	<servlet-class>edu.web_app.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Login_Servlet</servlet-name>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Ressource defintion, see context.xml in META-INF -->
   <resource-ref>
-  	<description>DB containing user credentials</description>
-  	<res-ref-name>jdbc/UserDB</res-ref-name>
-  	<res-type>javax.sql.DataSource</res-type>
-  	<res-auth>Application</res-auth>
+    
+    <!-- Database with user credentials -->
+    <description>DB containing user credentials</description>
+    <res-ref-name>jdbc/UserDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Application</res-auth>
   </resource-ref>
 </web-app>
